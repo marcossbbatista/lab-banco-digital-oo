@@ -1,3 +1,6 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 public abstract class Conta implements IConta {
 	
@@ -48,5 +51,20 @@ public abstract class Conta implements IConta {
 		System.out.println(String.format("Agencia: %d", this.agencia));
 		System.out.println(String.format("Numero: %d", this.numero));
 		System.out.println(String.format("Saldo: %.2f", this.saldo));
+		exibirDataHoraMovimentacao();
 	}
+
+	private void exibirDataHoraMovimentacao() {
+        // Obtém a data e hora atual
+        LocalDateTime agora = LocalDateTime.now();
+
+        // Define o formato da data e hora
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+        // Formata a data e hora
+        String dataHoraFormatada = agora.format(formatador);
+
+        // Exibe a data e hora atual
+        System.out.println("Data e Hora da Movimentação: " + dataHoraFormatada);
+    }
 }
